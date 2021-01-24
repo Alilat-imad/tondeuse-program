@@ -18,7 +18,7 @@ public enum Orientation {
   }
 
   public Orientation nextOrientation() {
-    int next = this.ordinal() + 1;
+    int next = ordinal() + 1;
     return orientations[next % length()];
   }
 

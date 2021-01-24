@@ -1,21 +1,49 @@
 package com.mowitnow.driver.service;
 
+import com.mowitnow.driver.factoryBuilder.InstructionFactory;
+import com.mowitnow.driver.factoryBuilder.StringFactory;
+import com.mowitnow.driver.model.Instruction;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 
-// TODO To Implement
+import static org.assertj.core.api.Assertions.assertThat;
+
 class InstructionServiceTest {
 
-    @Test
-    void readInstructionFile() {
-    }
+  InstructionService instructionService = new InstructionServiceImpl();
 
-    @Test
-    void executeInstructionFile() {
-    }
+  @Test
+  void readInstructionFile() {
+    // Given
+    List<String> input = StringFactory.instruction_file_as_String_Array();
+    Instruction expectedInstruction = InstructionFactory.instruction().build();
 
-    @Test
-    void executeTondeuse() {
-    }
+    // When
+    Instruction actualInstruction = instructionService.readInstructionFile(input);
+
+    // then
+    assertThat(actualInstruction).isNotNull();
+    assertThat(actualInstruction).usingRecursiveComparison().isEqualTo(expectedInstruction);
+  }
+
+  // TODO
+  @Test
+  void executeInstructionFile() {
+    // Given
+
+    // When
+
+    // then
+  }
+
+  // TODO
+  @Test
+  void executeTondeuse() {
+    // Given
+
+    // When
+
+    // then
+  }
 }
